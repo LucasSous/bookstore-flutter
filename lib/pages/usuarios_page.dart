@@ -3,7 +3,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:livraria_mobile/components/visualizar_modal.dart';
 import 'package:livraria_mobile/pages/usuario_form.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class UsuariosPage extends StatefulWidget {
   const UsuariosPage({Key? key}) : super(key: key);
@@ -13,7 +15,7 @@ class UsuariosPage extends StatefulWidget {
 }
 
 class _UsuariosPageState extends State<UsuariosPage> {
-  Future<List> pegarUsuario() async {
+  pegarUsuario() async {
     var url = Uri.parse('https://livraria--back.herokuapp.com/api/usuarios');
     var response = await http.get(url);
     if (response.statusCode == 200) {
@@ -46,7 +48,7 @@ class _UsuariosPageState extends State<UsuariosPage> {
         decoration: BoxDecoration(
           color: Colors.grey[300],
         ),
-        child: FutureBuilder<List>(
+        child: FutureBuilder<dynamic>(
           future: pegarUsuario(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
@@ -110,6 +112,15 @@ class _UsuariosPageState extends State<UsuariosPage> {
                       child: ListView.builder(
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
+                          var usuario = snapshot.data![index];
+                          void _visualizarModal() {
+                            showBarModalBottomSheet(
+                                context: context,
+                                builder: (context) => VisualizarModal(
+                                      usuario: usuario,
+                                    ));
+                          }
+
                           return Container(
                             margin: EdgeInsets.only(bottom: 7),
                             decoration: BoxDecoration(
@@ -120,11 +131,14 @@ class _UsuariosPageState extends State<UsuariosPage> {
                                     topLeft: Radius.circular(5),
                                     topRight: Radius.circular(5))),
                             child: ListTile(
-                              title: Text(snapshot.data![index]['nome']),
-                              subtitle: Text(snapshot.data![index]['email']),
+                              onTap: () {
+                                _visualizarModal();
+                              },
+                              title: Text(usuario['nome']),
+                              subtitle: Text(usuario['email']),
                               // ignore: sized_box_for_whitespace
                               trailing: Container(
-                                width: 100,
+                                width: 80,
                                 child: Row(
                                   children: <Widget>[
                                     IconButton(
@@ -134,7 +148,7 @@ class _UsuariosPageState extends State<UsuariosPage> {
                                     IconButton(
                                         onPressed: () {},
                                         color: Colors.red,
-                                        icon: const Icon(Icons.delete))
+                                        icon: const Icon(Icons.delete)),
                                   ],
                                 ),
                               ),
