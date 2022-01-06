@@ -121,6 +121,14 @@ class _UsuariosPageState extends State<UsuariosPage> {
                                     ));
                           }
 
+                          void onSelected(BuildContext context, int item) {
+                            switch (item) {
+                              case 0:
+                                _visualizarModal();
+                                break;
+                            }
+                          }
+
                           return Container(
                             margin: EdgeInsets.only(bottom: 7),
                             decoration: BoxDecoration(
@@ -131,26 +139,37 @@ class _UsuariosPageState extends State<UsuariosPage> {
                                     topLeft: Radius.circular(5),
                                     topRight: Radius.circular(5))),
                             child: ListTile(
-                              onTap: () {
-                                _visualizarModal();
-                              },
                               title: Text(usuario['nome']),
                               subtitle: Text(usuario['email']),
                               // ignore: sized_box_for_whitespace
-                              trailing: Container(
-                                width: 80,
-                                child: Row(
-                                  children: <Widget>[
-                                    IconButton(
-                                        onPressed: () {},
-                                        color: Colors.blue,
-                                        icon: const Icon(Icons.edit)),
-                                    IconButton(
-                                        onPressed: () {},
-                                        color: Colors.red,
-                                        icon: const Icon(Icons.delete)),
-                                  ],
-                                ),
+                              trailing: PopupMenuButton<int>(
+                                onSelected: (item) => onSelected(context, item),
+                                itemBuilder: (context) => [
+                                  PopupMenuItem<int>(
+                                      value: 0,
+                                      child: Row(
+                                        children: const [
+                                          Icon(Icons.visibility),
+                                          Text('   Visualizar')
+                                        ],
+                                      )),
+                                  PopupMenuItem<int>(
+                                      value: 1,
+                                      child: Row(
+                                        children: const [
+                                          Icon(Icons.edit),
+                                          Text('   Editar')
+                                        ],
+                                      )),
+                                  PopupMenuItem<int>(
+                                      value: 2,
+                                      child: Row(
+                                        children: const [
+                                          Icon(Icons.delete),
+                                          Text('   Deletar')
+                                        ],
+                                      )),
+                                ],
                               ),
                             ),
                           );
