@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:livraria_mobile/models/model_usuarios.dart';
 
 // ignore: must_be_immutable
 class VisualizarModal extends StatelessWidget {
-  Map<String, dynamic> usuario;
-  VisualizarModal({Key? key, required this.usuario}) : super(key: key);
+  final Usuarios usuario;
+  const VisualizarModal({Key? key, required this.usuario}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class VisualizarModal extends StatelessWidget {
               ),
             ),
             Text(
-              '${usuario['id']}',
+              '${usuario.id}',
               style: const TextStyle(
                 fontSize: 18,
                 color: Color(0xFF757575),
@@ -41,7 +42,7 @@ class VisualizarModal extends StatelessWidget {
               ),
             ),
             Text(
-              '${usuario['nome']}',
+              usuario.nome,
               style: const TextStyle(
                 fontSize: 18,
                 color: Color(0xFF757575),
@@ -54,7 +55,7 @@ class VisualizarModal extends StatelessWidget {
               ),
             ),
             Text(
-              '${usuario['endereco']}',
+              usuario.endereco,
               style: const TextStyle(
                 fontSize: 18,
                 color: Color(0xFF757575),
@@ -67,7 +68,7 @@ class VisualizarModal extends StatelessWidget {
               ),
             ),
             Text(
-              '${usuario['cidade']}',
+              usuario.cidade,
               style: const TextStyle(
                 fontSize: 18,
                 color: Color(0xFF757575),
@@ -80,7 +81,7 @@ class VisualizarModal extends StatelessWidget {
               ),
             ),
             Text(
-              '${usuario['email']}',
+              usuario.email,
               style: const TextStyle(
                 fontSize: 18,
                 color: Color(0xFF757575),

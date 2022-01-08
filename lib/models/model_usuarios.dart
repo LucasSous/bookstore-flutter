@@ -1,11 +1,11 @@
 class Usuarios {
-  dynamic id;
-  String nome;
-  String endereco;
-  String cidade;
-  String email;
+  final dynamic id;
+  final String nome;
+  final String endereco;
+  final String cidade;
+  final String email;
 
-  Usuarios(
+  const Usuarios(
       {this.id,
       required this.nome,
       required this.endereco,

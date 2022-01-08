@@ -3,9 +3,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:livraria_mobile/components/visualizar_modal.dart';
+import 'package:livraria_mobile/components/UsuariosList.dart';
 import 'package:livraria_mobile/pages/usuario_form.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:livraria_mobile/provider/usuarios_provider.dart';
+import 'package:provider/provider.dart';
 
 class UsuariosPage extends StatefulWidget {
   const UsuariosPage({Key? key}) : super(key: key);
@@ -28,6 +29,7 @@ class _UsuariosPageState extends State<UsuariosPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final usuarios = Provider.of<UsuariosProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Usuários'),
@@ -48,12 +50,12 @@ class _UsuariosPageState extends State<UsuariosPage> {
         decoration: BoxDecoration(
           color: Colors.grey[300],
         ),
-        child: FutureBuilder<dynamic>(
-          future: pegarUsuario(),
-          builder: (context, snapshot) {
+        child: FutureBuilder(
+          future: usuarios.loadUsers(),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasError) {
               return const Center(
-                child: Text('Erro ao carregar usuário'),
+                child: Text('Erro ao carregar usuários'),
               );
             }
 
@@ -110,71 +112,9 @@ class _UsuariosPageState extends State<UsuariosPage> {
                     child: Container(
                       padding: EdgeInsets.all(10),
                       child: ListView.builder(
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (context, index) {
-                          var usuario = snapshot.data![index];
-                          void _visualizarModal() {
-                            showBarModalBottomSheet(
-                                context: context,
-                                builder: (context) => VisualizarModal(
-                                      usuario: usuario,
-                                    ));
-                          }
-
-                          void onSelected(BuildContext context, int item) {
-                            switch (item) {
-                              case 0:
-                                _visualizarModal();
-                                break;
-                            }
-                          }
-
-                          return Container(
-                            margin: EdgeInsets.only(bottom: 7),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(5),
-                                    bottomRight: Radius.circular(5),
-                                    topLeft: Radius.circular(5),
-                                    topRight: Radius.circular(5))),
-                            child: ListTile(
-                              title: Text(usuario['nome']),
-                              subtitle: Text(usuario['email']),
-                              // ignore: sized_box_for_whitespace
-                              trailing: PopupMenuButton<int>(
-                                onSelected: (item) => onSelected(context, item),
-                                itemBuilder: (context) => [
-                                  PopupMenuItem<int>(
-                                      value: 0,
-                                      child: Row(
-                                        children: const [
-                                          Icon(Icons.visibility),
-                                          Text('   Visualizar')
-                                        ],
-                                      )),
-                                  PopupMenuItem<int>(
-                                      value: 1,
-                                      child: Row(
-                                        children: const [
-                                          Icon(Icons.edit),
-                                          Text('   Editar')
-                                        ],
-                                      )),
-                                  PopupMenuItem<int>(
-                                      value: 2,
-                                      child: Row(
-                                        children: const [
-                                          Icon(Icons.delete),
-                                          Text('   Deletar')
-                                        ],
-                                      )),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      ),
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (ctx, i) =>
+                              UsuariosList(snapshot.data[i])),
                     ),
                   ),
                 ],

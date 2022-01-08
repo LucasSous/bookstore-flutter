@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:livraria_mobile/models/model_usuarios.dart';
+import 'package:livraria_mobile/provider/usuarios_provider.dart';
+import 'package:provider/provider.dart';
 
 class UsuarioForm extends StatefulWidget {
   const UsuarioForm({Key? key}) : super(key: key);
@@ -11,8 +14,19 @@ class UsuarioForm extends StatefulWidget {
 
 class _UsuarioFormState extends State<UsuarioForm> {
   final formKey = GlobalKey<FormState>();
+  final Map<String, String> _formData = {};
   late final String? Function(String? text)? validator;
   late final void Function(String? text)? onSaved;
+
+  void _loadFormData(Usuarios usuarios) {
+    if (usuarios != null) {
+      _formData['id'] = usuarios.id;
+      _formData['nome'] = usuarios.nome;
+      _formData['endereco'] = usuarios.endereco;
+      _formData['cidade'] = usuarios.cidade;
+      _formData['email'] = usuarios.email;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

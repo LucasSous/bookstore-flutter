@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:livraria_mobile/pages/home_page.dart';
 import 'package:flutter/services.Dart';
+import 'package:livraria_mobile/provider/usuarios_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,10 +42,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Livraria-WDA',
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (ctx) => UsuariosProvider(),
+          )
+        ],
+        child: const MaterialApp(
+          title: 'Livraria-WDA',
+          debugShowCheckedModeBanner: false,
+          home: HomePage(),
+        ));
   }
 }
