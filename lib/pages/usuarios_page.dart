@@ -4,8 +4,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:livraria_mobile/components/UsuariosList.dart';
-import 'package:livraria_mobile/pages/usuario_form.dart';
 import 'package:livraria_mobile/provider/usuarios_provider.dart';
+import 'package:livraria_mobile/routes/app_rounts.dart';
 import 'package:provider/provider.dart';
 
 class UsuariosPage extends StatefulWidget {
@@ -37,10 +37,7 @@ class _UsuariosPageState extends State<UsuariosPage> {
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => UsuarioForm()));
+                Navigator.of(context).pushNamed(AppRoutes.USER_FORM);
               },
               icon: Icon(Icons.add))
         ],

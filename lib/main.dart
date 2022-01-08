@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:livraria_mobile/pages/home_page.dart';
 import 'package:flutter/services.Dart';
+import 'package:livraria_mobile/pages/usuario_form.dart';
 import 'package:livraria_mobile/provider/usuarios_provider.dart';
+import 'package:livraria_mobile/routes/app_rounts.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -48,10 +50,13 @@ class _MyHomePageState extends State<MyHomePage> {
             create: (ctx) => UsuariosProvider(),
           )
         ],
-        child: const MaterialApp(
+        child: MaterialApp(
           title: 'Livraria-WDA',
           debugShowCheckedModeBanner: false,
-          home: HomePage(),
+          routes: {
+            AppRoutes.HOME: (_) => const HomePage(),
+            AppRoutes.USER_FORM: (_) => const UsuarioForm()
+          },
         ));
   }
 }

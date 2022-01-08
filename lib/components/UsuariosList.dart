@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:livraria_mobile/components/visualizar_modal.dart';
 import 'package:livraria_mobile/models/model_usuarios.dart';
+import 'package:livraria_mobile/routes/app_rounts.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class UsuariosList extends StatelessWidget {
@@ -25,6 +26,9 @@ class UsuariosList extends StatelessWidget {
         case 0:
           _visualizarModal();
           break;
+        case 1:
+          Navigator.of(context)
+              .pushNamed(AppRoutes.USER_FORM, arguments: usuarios);
       }
     }
 

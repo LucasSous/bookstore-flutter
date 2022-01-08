@@ -41,4 +41,23 @@ class UsuariosProvider with ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future<void> update(Usuarios usuarios) async {
+    if (usuarios != null && usuarios.id != null) {
+      await http.put(Uri.parse(_baseURL + 'usuario'),
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          body: jsonEncode({
+            'id': usuarios.id,
+            'nome': usuarios.nome,
+            'endereco': usuarios.endereco,
+            'cidade': usuarios.cidade,
+            'email': usuarios.email,
+          }),
+          encoding: Encoding.getByName("utf-8"));
+      notifyListeners();
+    }
+  }
 }

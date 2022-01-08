@@ -1,9 +1,9 @@
 class Usuarios {
   final dynamic id;
-  final String nome;
-  final String endereco;
-  final String cidade;
-  final String email;
+  final dynamic nome;
+  final dynamic endereco;
+  final dynamic cidade;
+  final dynamic email;
 
   const Usuarios(
       {this.id,
