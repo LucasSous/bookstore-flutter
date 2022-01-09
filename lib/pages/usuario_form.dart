@@ -203,7 +203,7 @@ class _UsuarioFormState extends State<UsuarioForm> {
                             },
                             icon: Icon(Icons.save),
                             label: Text('Salvar')),
-                      )
+                      ),
                     ],
                   ),
                 ),

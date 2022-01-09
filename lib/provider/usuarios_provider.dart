@@ -25,6 +25,7 @@ class UsuariosProvider with ChangeNotifier {
   }
 
   Future<void> save(Usuarios usuarios) async {
+    // ignore: unnecessary_null_comparison
     if (usuarios != null) {
       await http.post(Uri.parse(_baseURL + 'usuario'),
           headers: {
@@ -43,8 +44,29 @@ class UsuariosProvider with ChangeNotifier {
   }
 
   Future<void> update(Usuarios usuarios) async {
+    // ignore: unnecessary_null_comparison
     if (usuarios != null && usuarios.id != null) {
       await http.put(Uri.parse(_baseURL + 'usuario'),
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          body: jsonEncode({
+            'id': usuarios.id,
+            'nome': usuarios.nome,
+            'endereco': usuarios.endereco,
+            'cidade': usuarios.cidade,
+            'email': usuarios.email,
+          }),
+          encoding: Encoding.getByName("utf-8"));
+      notifyListeners();
+    }
+  }
+
+  Future<void> remove(Usuarios usuarios) async {
+    // ignore: unnecessary_null_comparison
+    if (usuarios != null) {
+      await http.delete(Uri.parse(_baseURL + 'usuario'),
           headers: {
             "Accept": "application/json",
             "Content-Type": "application/json"
