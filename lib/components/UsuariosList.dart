@@ -35,6 +35,7 @@ class UsuariosList extends StatelessWidget {
         case 2:
           showDialog(
               context: context,
+              barrierDismissible: false,
               builder: (ctx) => AlertDialog(
                     title: const Text('Excluir Usuário'),
                     content: const Text('Deseja realmente excluir?'),
@@ -42,9 +43,14 @@ class UsuariosList extends StatelessWidget {
                       TextButton(
                         style: TextButton.styleFrom(),
                         onPressed: () {
-                          Navigator.pop(context);
+                          Navigator.pop(ctx);
                         },
-                        child: const Text('Não'),
+                        child: const Text(
+                          'Não',
+                          style: TextStyle(
+                            color: Colors.red,
+                          ),
+                        ),
                       ),
                       TextButton(
                         style: TextButton.styleFrom(),
@@ -56,12 +62,13 @@ class UsuariosList extends StatelessWidget {
                                   endereco: usuarios.endereco,
                                   cidade: usuarios.cidade,
                                   email: usuarios.email));
-                          Navigator.of(context).pop();
+                          Navigator.pop(ctx);
                         },
                         child: const Text('Sim'),
                       ),
                     ],
                   ));
+          break;
       }
     }
 

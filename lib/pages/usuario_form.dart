@@ -172,7 +172,7 @@ class _UsuarioFormState extends State<UsuarioForm> {
                             style: ButtonStyle(
                               shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
+                                  borderRadius: BorderRadius.circular(5.0),
                                 ),
                               ),
                             ),
@@ -202,7 +202,10 @@ class _UsuarioFormState extends State<UsuarioForm> {
                               }
                             },
                             icon: Icon(Icons.save),
-                            label: Text('Salvar')),
+                            label: Text(
+                              'Salvar',
+                              style: TextStyle(fontSize: 20),
+                            )),
                       ),
                     ],
                   ),

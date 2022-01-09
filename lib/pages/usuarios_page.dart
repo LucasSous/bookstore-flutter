@@ -90,7 +90,7 @@ class _UsuariosPageState extends State<UsuariosPage> {
                                 ]),
                             child: Container(
                               margin: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
+                                  horizontal: 10, vertical: 10),
                               child: TextField(
                                 decoration: InputDecoration(
                                     hintText: 'Pesquisar',
@@ -107,7 +107,9 @@ class _UsuariosPageState extends State<UsuariosPage> {
                   ),
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.only(top: 10),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                       child: ListView.builder(
                           itemCount: snapshot.data!.length,
                           itemBuilder: (ctx, i) =>
