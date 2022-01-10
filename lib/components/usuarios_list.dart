@@ -92,7 +92,7 @@ class UsuariosList extends StatelessWidget {
 
         // ignore: sized_box_for_whitespace
         trailing: Container(
-          width: 70,
+          width: 80,
           child: Row(
             children: [
               const Icon(Icons.expand_more),
@@ -146,7 +146,7 @@ class UsuariosList extends StatelessWidget {
         ),
         children: [
           Container(
-            height: 60,
+            height: 65,
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
             color: Colors.white,
             child: Column(

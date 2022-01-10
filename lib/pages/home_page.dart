@@ -45,33 +45,34 @@ class HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: paginaAtual,
         // ignore: prefer_const_constructors
-        fixedColor: Colors.white,
-        unselectedItemColor: Colors.grey[400],
+        fixedColor: Color(0xff212529),
+        iconSize: 25,
+        unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(Icons.home_outlined),
               label: 'Início',
-              backgroundColor: Color(0xff212529)),
+              backgroundColor: Colors.white),
           BottomNavigationBarItem(
-              icon: Icon(Icons.people),
+              icon: Icon(Icons.people_alt_outlined),
               label: 'Usuários',
-              backgroundColor: Color(0xff212529)),
+              backgroundColor: Colors.white),
           BottomNavigationBarItem(
-              icon: Icon(Icons.bookmark),
+              icon: Icon(Icons.align_vertical_bottom_sharp),
               label: 'Editoras',
-              backgroundColor: Color(0xff212529)),
+              backgroundColor: Colors.white),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.book,
+                Icons.book_outlined,
               ),
               label: 'Livros',
-              backgroundColor: Color(0xff212529)),
+              backgroundColor: Colors.white),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.calendar_today,
               ),
               label: 'Aluguéis',
-              backgroundColor: Color(0xff212529)),
+              backgroundColor: Colors.white),
         ],
         onTap: (pagina) {
           pc.animateToPage(pagina,

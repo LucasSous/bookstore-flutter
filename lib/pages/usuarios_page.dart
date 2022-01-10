@@ -3,7 +3,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:livraria_mobile/components/UsuariosList.dart';
+import 'package:livraria_mobile/components/usuarios_list.dart';
 import 'package:livraria_mobile/provider/usuarios_provider.dart';
 import 'package:livraria_mobile/routes/app_rounts.dart';
 import 'package:provider/provider.dart';
