@@ -38,9 +38,15 @@ class _UsuarioFormState extends State<UsuarioForm> {
 
   titulo() {
     if (_formData['id'] != null) {
-      return Text('Editar Usuário');
+      return Text(
+        'Editar Usuário',
+        style: TextStyle(color: Color(0xFFBDBDBD)),
+      );
     } else {
-      return Text('Novo Usuário');
+      return Text(
+        'Novo Usuário',
+        style: TextStyle(color: Color(0xFFBDBDBD)),
+      );
     }
   }
 

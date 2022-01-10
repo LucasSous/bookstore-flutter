@@ -26,26 +26,32 @@ class _UsuariosPageState extends State<UsuariosPage> {
     }
   }
 
+  String filterText = "";
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final usuarios = Provider.of<UsuariosProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Usuários'),
+        title: const Text(
+          'Usuários',
+          style: TextStyle(color: Color(0xFFBDBDBD)),
+        ),
         elevation: 0,
         actions: <Widget>[
           IconButton(
               onPressed: () {
                 Navigator.of(context).pushNamed(AppRoutes.USER_FORM);
               },
-              icon: Icon(Icons.add))
+              icon: Icon(Icons.add),
+              color: Color(0xFFBDBDBD))
         ],
         backgroundColor: const Color(0xff212529),
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: Colors.grey[300],
+          color: Color(0xFFF5F5F5),
         ),
         child: FutureBuilder(
           future: usuarios.loadUsers(),
@@ -98,6 +104,11 @@ class _UsuariosPageState extends State<UsuariosPage> {
                                     enabledBorder: InputBorder.none,
                                     focusedBorder: InputBorder.none,
                                     suffixIcon: Icon(Icons.search)),
+                                onChanged: (text) {
+                                  setState(() {
+                                    filterText = text;
+                                  });
+                                },
                               ),
                             ),
                           ),

@@ -45,7 +45,8 @@ class HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: paginaAtual,
         // ignore: prefer_const_constructors
-        fixedColor: Color(0xff198754),
+        fixedColor: Colors.white,
+        unselectedItemColor: Colors.grey[400],
         items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -66,8 +67,10 @@ class HomePageState extends State<HomePage> {
               label: 'Livros',
               backgroundColor: Color(0xff212529)),
           BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today),
-              label: 'Alugéis',
+              icon: Icon(
+                Icons.calendar_today,
+              ),
+              label: 'Aluguéis',
               backgroundColor: Color(0xff212529)),
         ],
         onTap: (pagina) {
