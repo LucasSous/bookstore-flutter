@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:livraria_mobile/pages/home_page.dart';
 import 'package:flutter/services.Dart';
 import 'package:livraria_mobile/pages/usuario_form.dart';
+import 'package:livraria_mobile/pages/usuarios_page.dart';
 import 'package:livraria_mobile/provider/usuarios_provider.dart';
 import 'package:livraria_mobile/routes/app_rounts.dart';
 import 'package:provider/provider.dart';
@@ -55,7 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
           debugShowCheckedModeBanner: false,
           routes: {
             AppRoutes.HOME: (_) => const HomePage(),
-            AppRoutes.USER_FORM: (_) => const UsuarioForm()
+            AppRoutes.USER_FORM: (_) => const UsuarioForm(),
+            AppRoutes.USER_PAGE: (_) => const UsuariosPage()
           },
         ));
   }

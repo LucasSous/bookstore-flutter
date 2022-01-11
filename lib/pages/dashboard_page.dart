@@ -13,7 +13,10 @@ class _DashboardPageState extends State<DashboardPage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard'),
+        title: const Text(
+          'Dashboard',
+          style: TextStyle(color: Color(0xFFBDBDBD)),
+        ),
         elevation: 0,
         backgroundColor: const Color(0xff212529),
       ),
@@ -22,17 +25,15 @@ class _DashboardPageState extends State<DashboardPage> {
         child: Column(
           children: [
             Container(
-              height: 130,
+              height: MediaQuery.of(context).size.height / 5,
               decoration: const BoxDecoration(color: Color(0xFFF5F5F5)),
               child: Stack(
                 children: [
                   Container(
                     height: size.height * 0.2 - 50,
                     decoration: const BoxDecoration(
-                        color: Color(0xff212529),
-                        borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(26),
-                            bottomRight: Radius.circular(26))),
+                      color: Color(0xff212529),
+                    ),
                   ),
                   Positioned(
                       bottom: 0,
@@ -46,34 +47,106 @@ class _DashboardPageState extends State<DashboardPage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
-                              alignment: Alignment.center,
+                              padding: const EdgeInsets.all(10),
                               height: MediaQuery.of(context).size.height / 5,
                               width: MediaQuery.of(context).size.height / 5,
                               decoration: BoxDecoration(
                                   color: const Color(0xFF0077FF),
-                                  borderRadius: BorderRadius.circular(5),
+                                  borderRadius: BorderRadius.circular(10),
                                   boxShadow: const [
                                     BoxShadow(
                                         spreadRadius: 0.1,
                                         blurRadius: 5,
                                         color: Colors.black26)
                                   ]),
-                              child: const Text('ola'),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white.withOpacity(0.3),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        child: const Icon(
+                                          Icons.group_outlined,
+                                          color: Colors.white,
+                                          size: 18,
+                                        ),
+                                      ),
+                                      Container(
+                                          margin:
+                                              const EdgeInsets.only(left: 10),
+                                          child: const Text(
+                                            'Usuários',
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.white),
+                                          )),
+                                    ],
+                                  ),
+                                  const Text(
+                                    '7',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 45,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ],
+                              ),
                             ),
                             Container(
-                              alignment: Alignment.center,
+                              padding: const EdgeInsets.all(10),
                               height: MediaQuery.of(context).size.height / 5,
                               width: MediaQuery.of(context).size.height / 5,
                               decoration: BoxDecoration(
                                   color: const Color(0xFF006CAA),
-                                  borderRadius: BorderRadius.circular(5),
+                                  borderRadius: BorderRadius.circular(10),
                                   boxShadow: const [
                                     BoxShadow(
                                         spreadRadius: 0.1,
                                         blurRadius: 5,
                                         color: Colors.black26)
                                   ]),
-                              child: const Text('ola'),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white.withOpacity(0.3),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        child: const Icon(
+                                          Icons.book_outlined,
+                                          color: Colors.white,
+                                          size: 18,
+                                        ),
+                                      ),
+                                      Container(
+                                          margin:
+                                              const EdgeInsets.only(left: 10),
+                                          child: const Text(
+                                            'Livros',
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.white),
+                                          )),
+                                    ],
+                                  ),
+                                  const Text(
+                                    '7',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 45,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -81,6 +154,123 @@ class _DashboardPageState extends State<DashboardPage> {
                 ],
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 15),
+                  padding: const EdgeInsets.all(10),
+                  height: MediaQuery.of(context).size.height / 5.7,
+                  width: MediaQuery.of(context).size.height / 5,
+                  decoration: BoxDecoration(
+                      color: const Color(0xFFDB2D2D),
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: const [
+                        BoxShadow(
+                            spreadRadius: 0.1,
+                            blurRadius: 5,
+                            color: Colors.black26)
+                      ]),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: const Icon(
+                              Icons.align_vertical_bottom_sharp,
+                              color: Colors.white,
+                              size: 18,
+                            ),
+                          ),
+                          Container(
+                              margin: const EdgeInsets.only(left: 10),
+                              child: const Text(
+                                'Editoras',
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.white),
+                              )),
+                        ],
+                      ),
+                      const Text(
+                        '7',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 15),
+                  padding: const EdgeInsets.all(10),
+                  height: MediaQuery.of(context).size.height / 5.7,
+                  width: MediaQuery.of(context).size.height / 5,
+                  decoration: BoxDecoration(
+                      color: const Color(0xFF198754),
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: const [
+                        BoxShadow(
+                            spreadRadius: 0.1,
+                            blurRadius: 5,
+                            color: Colors.black26)
+                      ]),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: const Icon(
+                              Icons.calendar_today,
+                              color: Colors.white,
+                              size: 18,
+                            ),
+                          ),
+                          Container(
+                              margin: const EdgeInsets.only(left: 10),
+                              child: const Text(
+                                'Aluguéis',
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.white),
+                              )),
+                        ],
+                      ),
+                      const Text(
+                        '7',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+              height: MediaQuery.of(context).size.height / 3,
+              width: MediaQuery.of(context).size.height / 1,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: const [
+                    BoxShadow(
+                        spreadRadius: 0.1, blurRadius: 5, color: Colors.black26)
+                  ]),
+              child: Text('gráfico'),
+            )
           ],
         ),
       ),

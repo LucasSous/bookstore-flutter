@@ -80,9 +80,9 @@ class UsuariosList extends StatelessWidget {
             topRight: Radius.circular(5)),
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: Color(0xFFBDBDBD),
-            blurRadius: 2.0,
-            offset: Offset(0, 2),
+            spreadRadius: 0.1,
+            blurRadius: 4,
+            color: Colors.black26,
           )
         ],
       ),
