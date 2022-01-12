@@ -48,6 +48,7 @@ class HomePageState extends State<HomePage> {
         fixedColor: Color(0xff212529),
         iconSize: 25,
         unselectedItemColor: Colors.grey,
+        type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
