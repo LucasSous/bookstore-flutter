@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:livraria_mobile/provider/editoras_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:livraria_mobile/provider/usuarios_provider.dart';
 
@@ -14,6 +15,7 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final usuarios = Provider.of<UsuariosProvider>(context);
+    final editoras = Provider.of<EditorasProvider>(context);
     return Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -127,9 +129,9 @@ class _DashboardPageState extends State<DashboardPage> {
                                   ),
                                 ),
                                 FutureBuilder(
-                                    future: usuarios.loadUsers(),
+                                    future: editoras.loadPublishers(),
                                     builder: (BuildContext context,
-                                        AsyncSnapshot usuarios) {
+                                        AsyncSnapshot editoras) {
                                       return ListTile(
                                         leading: Container(
                                           padding: const EdgeInsets.all(10),
@@ -146,7 +148,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                         ),
                                         title: const Text('Editoras'),
                                         trailing:
-                                            Text('${usuarios.data?.length}'),
+                                            Text('${editoras.data?.length}'),
                                       );
                                     }),
                                 Container(

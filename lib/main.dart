@@ -3,6 +3,7 @@ import 'package:livraria_mobile/pages/home_page.dart';
 import 'package:flutter/services.Dart';
 import 'package:livraria_mobile/pages/usuario_form.dart';
 import 'package:livraria_mobile/pages/usuarios_page.dart';
+import 'package:livraria_mobile/provider/editoras_provider.dart';
 import 'package:livraria_mobile/provider/usuarios_provider.dart';
 import 'package:livraria_mobile/routes/app_rounts.dart';
 import 'package:provider/provider.dart';
@@ -49,6 +50,9 @@ class _MyHomePageState extends State<MyHomePage> {
         providers: [
           ChangeNotifierProvider(
             create: (ctx) => UsuariosProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (ctx) => EditorasProvider(),
           )
         ],
         child: MaterialApp(
