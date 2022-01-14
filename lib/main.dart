@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:livraria_mobile/pages/editora_form.dart';
+import 'package:livraria_mobile/pages/editoras_page.dart';
 import 'package:livraria_mobile/pages/home_page.dart';
 import 'package:flutter/services.Dart';
 import 'package:livraria_mobile/pages/usuario_form.dart';
@@ -61,7 +63,9 @@ class _MyHomePageState extends State<MyHomePage> {
           routes: {
             AppRoutes.HOME: (_) => const HomePage(),
             AppRoutes.USER_FORM: (_) => const UsuarioForm(),
-            AppRoutes.USER_PAGE: (_) => const UsuariosPage()
+            AppRoutes.USER_PAGE: (_) => const UsuariosPage(),
+            AppRoutes.PUBLISHER_FORM: (_) => const EditoraForm(),
+            AppRoutes.PUBLISHER_PAGE: (_) => const EditorasPage(),
           },
         ));
   }
