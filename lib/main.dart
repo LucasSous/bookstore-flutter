@@ -9,6 +9,7 @@ import 'package:livraria_mobile/provider/editoras_provider.dart';
 import 'package:livraria_mobile/provider/usuarios_provider.dart';
 import 'package:livraria_mobile/routes/app_rounts.dart';
 import 'package:provider/provider.dart';
+import 'package:asuka/asuka.dart' as asuka;
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: asuka.builder,
       title: 'Livraria WDA',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

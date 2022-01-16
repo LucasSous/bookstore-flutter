@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:convert';
+import 'package:asuka/snackbars/asuka_snack_bar.dart';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -26,7 +29,7 @@ class EditorasProvider with ChangeNotifier {
   Future<void> save(Editoras editoras) async {
     // ignore: unnecessary_null_comparison
     if (editoras != null) {
-      await http.post(Uri.parse(_baseURL + 'editora'),
+      final response = await http.post(Uri.parse(_baseURL + 'editora'),
           headers: {
             "Accept": "application/json",
             "Content-Type": "application/json"
@@ -36,6 +39,11 @@ class EditorasProvider with ChangeNotifier {
             'cidade': editoras.cidade,
           }),
           encoding: Encoding.getByName("utf-8"));
+      if (response.statusCode == 200) {
+        AsukaSnackbar.success("Editora salva com sucesso!").show();
+      } else {
+        AsukaSnackbar.alert("Erro ao tentar salvar a editora!").show();
+      }
       notifyListeners();
     }
   }
@@ -43,7 +51,7 @@ class EditorasProvider with ChangeNotifier {
   Future<void> update(Editoras editoras) async {
     // ignore: unnecessary_null_comparison
     if (editoras != null && editoras.id != null) {
-      await http.put(Uri.parse(_baseURL + 'editora'),
+      final response = await http.put(Uri.parse(_baseURL + 'editora'),
           headers: {
             "Accept": "application/json",
             "Content-Type": "application/json"
@@ -54,6 +62,11 @@ class EditorasProvider with ChangeNotifier {
             'cidade': editoras.cidade,
           }),
           encoding: Encoding.getByName("utf-8"));
+      if (response.statusCode == 200) {
+        AsukaSnackbar.success("Editora alterada com sucesso!").show();
+      } else {
+        AsukaSnackbar.alert("Erro ao tentar alterar a editora!").show();
+      }
       notifyListeners();
     }
   }
@@ -61,7 +74,7 @@ class EditorasProvider with ChangeNotifier {
   Future<void> remove(Editoras editoras) async {
     // ignore: unnecessary_null_comparison
     if (editoras != null) {
-      await http.delete(Uri.parse(_baseURL + 'editora'),
+      final response = await http.delete(Uri.parse(_baseURL + 'editora'),
           headers: {
             "Accept": "application/json",
             "Content-Type": "application/json"
@@ -72,6 +85,11 @@ class EditorasProvider with ChangeNotifier {
             'cidade': editoras.cidade,
           }),
           encoding: Encoding.getByName("utf-8"));
+      if (response.statusCode == 200) {
+        AsukaSnackbar.success("Editora deletada com sucesso!").show();
+      } else {
+        AsukaSnackbar.alert("Erro ao tentar deletar a editora!").show();
+      }
       notifyListeners();
     }
   }

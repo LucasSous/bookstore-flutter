@@ -51,8 +51,8 @@ class HomePageState extends State<HomePage> {
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'Início',
+              icon: Icon(Icons.dashboard_outlined),
+              label: 'Dashboard',
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
               icon: Icon(Icons.people_alt_outlined),
@@ -77,8 +77,7 @@ class HomePageState extends State<HomePage> {
         ],
         onTap: (pagina) {
           pc.animateToPage(pagina,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeIn);
+              duration: const Duration(milliseconds: 5), curve: Curves.easeIn);
         },
       ),
     );
