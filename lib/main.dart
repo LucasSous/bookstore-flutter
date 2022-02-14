@@ -6,6 +6,7 @@ import 'package:flutter/services.Dart';
 import 'package:livraria_mobile/pages/usuario_form.dart';
 import 'package:livraria_mobile/pages/usuarios_page.dart';
 import 'package:livraria_mobile/provider/editoras_provider.dart';
+import 'package:livraria_mobile/provider/livros_provider.dart';
 import 'package:livraria_mobile/provider/usuarios_provider.dart';
 import 'package:livraria_mobile/routes/app_rounts.dart';
 import 'package:provider/provider.dart';
@@ -57,7 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           ChangeNotifierProvider(
             create: (ctx) => EditorasProvider(),
-          )
+          ),
+          ChangeNotifierProvider(
+            create: (ctx) => LivrosProvider(),
+          ),
         ],
         child: MaterialApp(
           title: 'Livraria-WDA',

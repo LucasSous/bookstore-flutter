@@ -1,14 +1,12 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:livraria_mobile/models/model_editoras.dart';
-import 'package:livraria_mobile/provider/editoras_provider.dart';
+import 'package:livraria_mobile/models/model_livros.dart';
 import 'package:livraria_mobile/routes/app_rounts.dart';
-import 'package:provider/provider.dart';
 
-class EditorasList extends StatelessWidget {
-  final Editoras editoras;
-  const EditorasList(this.editoras);
+class LivrosList extends StatelessWidget {
+  final Livros livros;
+  const LivrosList(this.livros);
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +17,14 @@ class EditorasList extends StatelessWidget {
         //  break;
         case 1:
           Navigator.of(context)
-              .pushNamed(AppRoutes.PUBLISHER_FORM, arguments: editoras);
+              .pushNamed(AppRoutes.PUBLISHER_FORM, arguments: livros);
           break;
         case 2:
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (ctx) => AlertDialog(
-                    title: const Text('Excluir Editora'),
+                    title: const Text('Excluir Livro'),
                     content: const Text('Deseja realmente excluir?'),
                     actions: [
                       TextButton(
@@ -44,12 +42,11 @@ class EditorasList extends StatelessWidget {
                       TextButton(
                         style: TextButton.styleFrom(),
                         onPressed: () {
-                          Provider.of<EditorasProvider>(context, listen: false)
-                              .remove(Editoras(
-                            id: editoras.id,
-                            nome: editoras.nome,
-                            cidade: editoras.cidade,
-                          ));
+                          //Provider.of<EditorasProvider>(context, listen: false)
+                          //  .remove(Editoras(
+                          // id: livros.id,
+                          // nome: livros.nome,
+                          // ));
                           Navigator.pop(ctx);
                         },
                         child: const Text('Sim'),
@@ -78,8 +75,8 @@ class EditorasList extends StatelessWidget {
         ],
       ),
       child: ExpansionTile(
-        title: Text(editoras.nome),
-        subtitle: Text(editoras.cidade),
+        title: Text(livros.nome),
+        subtitle: Text(livros.autor),
 
         // ignore: sized_box_for_whitespace
         trailing: Container(
@@ -129,14 +126,35 @@ class EditorasList extends StatelessWidget {
         ),
         children: [
           Container(
-            height: 35,
+            height: 65,
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
             color: Colors.white,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  'Código: ${editoras.id}',
+                  'Código: ${livros.id}',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                  ),
+                ),
+                Text(
+                  'Editora: ${livros.editora}',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                  ),
+                ),
+                Text(
+                  'Lancamento: ${livros.lancamento}',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                  ),
+                ),
+                Text(
+                  'Quantidade: ${livros.quantidade}',
                   style: const TextStyle(
                     fontSize: 14,
                     color: Colors.grey,
